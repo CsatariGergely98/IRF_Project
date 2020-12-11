@@ -1,0 +1,280 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="TKTEGJ_IRFModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Dolgozo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MunkakorId" Type="int" Nullable="false" />
+          <Property Name="LoginNev" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Jelszo" Type="nvarchar" MaxLength="64" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="Admin" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Munkakor">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Megnevezes" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Munkavegzes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DolgozoId" Type="int" Nullable="false" />
+          <Property Name="TevekenysegId" Type="int" Nullable="false" />
+          <Property Name="Kezdodatum" Type="datetime" Nullable="false" />
+          <Property Name="Vegdatum" Type="datetime" Nullable="false" />
+          <Property Name="Megjegyzes" Type="nvarchar" MaxLength="100" />
+          <Property Name="Ugyfelazonosito" Type="nvarchar" MaxLength="20" />
+          <Property Name="Iktatoszam" Type="nvarchar" MaxLength="20" />
+          <Property Name="Iktatottoldalszam" Type="int" />
+          <Property Name="Ledolgozott" Type="int" StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="Tevekenyseg">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Megnevezes" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Dolgozo__Munkako__5165187F">
+          <End Role="Munkakor" Type="Self.Munkakor" Multiplicity="1" />
+          <End Role="Dolgozo" Type="Self.Dolgozo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Munkakor">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Dolgozo">
+              <PropertyRef Name="MunkakorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Munkavegzes_Dolgozo">
+          <End Role="Dolgozo" Type="Self.Dolgozo" Multiplicity="1" />
+          <End Role="Munkavegzes" Type="Self.Munkavegzes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dolgozo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Munkavegzes">
+              <PropertyRef Name="DolgozoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Munkavegzes_Tevekenyseg">
+          <End Role="Tevekenyseg" Type="Self.Tevekenyseg" Multiplicity="1" />
+          <End Role="Munkavegzes" Type="Self.Munkavegzes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tevekenyseg">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Munkavegzes">
+              <PropertyRef Name="TevekenysegId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TKTEGJ_IRFModelStoreContainer">
+          <EntitySet Name="Dolgozo" EntityType="Self.Dolgozo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Munkakor" EntityType="Self.Munkakor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Munkavegzes" EntityType="Self.Munkavegzes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tevekenyseg" EntityType="Self.Tevekenyseg" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Dolgozo__Munkako__5165187F" Association="Self.FK__Dolgozo__Munkako__5165187F">
+            <End Role="Munkakor" EntitySet="Munkakor" />
+            <End Role="Dolgozo" EntitySet="Dolgozo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Munkavegzes_Dolgozo" Association="Self.FK_Munkavegzes_Dolgozo">
+            <End Role="Dolgozo" EntitySet="Dolgozo" />
+            <End Role="Munkavegzes" EntitySet="Munkavegzes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Munkavegzes_Tevekenyseg" Association="Self.FK_Munkavegzes_Tevekenyseg">
+            <End Role="Tevekenyseg" EntitySet="Tevekenyseg" />
+            <End Role="Munkavegzes" EntitySet="Munkavegzes" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TKTEGJ_IRFModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Dolgozo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MunkakorId" Type="Int32" Nullable="false" />
+          <Property Name="LoginNev" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Jelszo" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Admin" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Munkakor" Relationship="Self.FK__Dolgozo__Munkako__5165187F" FromRole="Dolgozo" ToRole="Munkakor" />
+          <NavigationProperty Name="Munkavegzes" Relationship="Self.FK_Munkavegzes_Dolgozo" FromRole="Dolgozo" ToRole="Munkavegzes" />
+        </EntityType>
+        <EntityType Name="Munkakor">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Megnevezes" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Dolgozo" Relationship="Self.FK__Dolgozo__Munkako__5165187F" FromRole="Munkakor" ToRole="Dolgozo" />
+        </EntityType>
+        <EntityType Name="Munkavegzes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DolgozoId" Type="Int32" Nullable="false" />
+          <Property Name="TevekenysegId" Type="Int32" Nullable="false" />
+          <Property Name="Kezdodatum" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Vegdatum" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Megjegyzes" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Ugyfelazonosito" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Iktatoszam" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Iktatottoldalszam" Type="Int32" />
+          <Property Name="Ledolgozott" Type="Int32" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="Dolgozo" Relationship="Self.FK_Munkavegzes_Dolgozo" FromRole="Munkavegzes" ToRole="Dolgozo" />
+          <NavigationProperty Name="Tevekenyseg" Relationship="Self.FK_Munkavegzes_Tevekenyseg" FromRole="Munkavegzes" ToRole="Tevekenyseg" />
+        </EntityType>
+        <EntityType Name="Tevekenyseg">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Megnevezes" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Munkavegzes" Relationship="Self.FK_Munkavegzes_Tevekenyseg" FromRole="Tevekenyseg" ToRole="Munkavegzes" />
+        </EntityType>
+        <Association Name="FK__Dolgozo__Munkako__5165187F">
+          <End Role="Munkakor" Type="Self.Munkakor" Multiplicity="1" />
+          <End Role="Dolgozo" Type="Self.Dolgozo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Munkakor">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Dolgozo">
+              <PropertyRef Name="MunkakorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Munkavegzes_Dolgozo">
+          <End Role="Dolgozo" Type="Self.Dolgozo" Multiplicity="1" />
+          <End Role="Munkavegzes" Type="Self.Munkavegzes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dolgozo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Munkavegzes">
+              <PropertyRef Name="DolgozoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Munkavegzes_Tevekenyseg">
+          <End Role="Tevekenyseg" Type="Self.Tevekenyseg" Multiplicity="1" />
+          <End Role="Munkavegzes" Type="Self.Munkavegzes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tevekenyseg">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Munkavegzes">
+              <PropertyRef Name="TevekenysegId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TKTEGJ_IRFEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Dolgozo" EntityType="Self.Dolgozo" />
+          <EntitySet Name="Munkakor" EntityType="Self.Munkakor" />
+          <EntitySet Name="Munkavegzes" EntityType="Self.Munkavegzes" />
+          <EntitySet Name="Tevekenyseg" EntityType="Self.Tevekenyseg" />
+          <AssociationSet Name="FK__Dolgozo__Munkako__5165187F" Association="Self.FK__Dolgozo__Munkako__5165187F">
+            <End Role="Munkakor" EntitySet="Munkakor" />
+            <End Role="Dolgozo" EntitySet="Dolgozo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Munkavegzes_Dolgozo" Association="Self.FK_Munkavegzes_Dolgozo">
+            <End Role="Dolgozo" EntitySet="Dolgozo" />
+            <End Role="Munkavegzes" EntitySet="Munkavegzes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Munkavegzes_Tevekenyseg" Association="Self.FK_Munkavegzes_Tevekenyseg">
+            <End Role="Tevekenyseg" EntitySet="Tevekenyseg" />
+            <End Role="Munkavegzes" EntitySet="Munkavegzes" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TKTEGJ_IRFModelStoreContainer" CdmEntityContainer="TKTEGJ_IRFEntities">
+          <EntitySetMapping Name="Dolgozo">
+            <EntityTypeMapping TypeName="TKTEGJ_IRFModel.Dolgozo">
+              <MappingFragment StoreEntitySet="Dolgozo">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="MunkakorId" ColumnName="MunkakorId" />
+                <ScalarProperty Name="LoginNev" ColumnName="LoginNev" />
+                <ScalarProperty Name="Jelszo" ColumnName="Jelszo" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Admin" ColumnName="Admin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Munkakor">
+            <EntityTypeMapping TypeName="TKTEGJ_IRFModel.Munkakor">
+              <MappingFragment StoreEntitySet="Munkakor">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Megnevezes" ColumnName="Megnevezes" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Munkavegzes">
+            <EntityTypeMapping TypeName="TKTEGJ_IRFModel.Munkavegzes">
+              <MappingFragment StoreEntitySet="Munkavegzes">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="DolgozoId" ColumnName="DolgozoId" />
+                <ScalarProperty Name="TevekenysegId" ColumnName="TevekenysegId" />
+                <ScalarProperty Name="Kezdodatum" ColumnName="Kezdodatum" />
+                <ScalarProperty Name="Vegdatum" ColumnName="Vegdatum" />
+                <ScalarProperty Name="Megjegyzes" ColumnName="Megjegyzes" />
+                <ScalarProperty Name="Ugyfelazonosito" ColumnName="Ugyfelazonosito" />
+                <ScalarProperty Name="Iktatoszam" ColumnName="Iktatoszam" />
+                <ScalarProperty Name="Iktatottoldalszam" ColumnName="Iktatottoldalszam" />
+                <ScalarProperty Name="Ledolgozott" ColumnName="Ledolgozott" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tevekenyseg">
+            <EntityTypeMapping TypeName="TKTEGJ_IRFModel.Tevekenyseg">
+              <MappingFragment StoreEntitySet="Tevekenyseg">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Megnevezes" ColumnName="Megnevezes" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
