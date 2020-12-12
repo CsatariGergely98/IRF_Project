@@ -64,5 +64,15 @@ namespace IRF_Beadando
         {
             new JelszoModositasForm().ShowDialog();
         }
+
+        private void TevékenységToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new TevekenysegForm().ShowDialog();
+        }
+
+        private void MunkavegzesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new MunkavegzesForm().ShowDialog();
+        }
     }
 }
