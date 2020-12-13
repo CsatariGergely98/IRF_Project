@@ -168,15 +168,30 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>TKTEGJ_IRFDataSet.xsd</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="DolgozoForm.resx" />
-    <EmbeddedResource Include="JelszoModositasForm.resx" />
-    <EmbeddedResource Include="LoginForm.resx" />
-    <EmbeddedResource Include="MainForm.resx" />
+    <EmbeddedResource Include="DolgozoForm.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>DolgozoForm1.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="JelszoModositasForm.resx">
+      <DependentUpon>JelszoModositasForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MunkavegzesForm.resx">
       <DependentUpon>MunkavegzesForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="TevekenysegForm.resx" />
-    <EmbeddedResource Include="MunkakorForm.resx" />
+    <EmbeddedResource Include="TevekenysegForm.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>TevekenysegForm1.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MunkakorForm.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>MunkakorForm1.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -232,6 +247,7 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\oralogo.jpg" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">

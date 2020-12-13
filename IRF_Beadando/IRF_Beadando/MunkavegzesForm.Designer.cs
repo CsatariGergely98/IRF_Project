@@ -30,6 +30,16 @@
         {
             this.components = new System.ComponentModel.Container();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.chbnapzar = new System.Windows.Forms.CheckBox();
+            this.bNapzar = new System.Windows.Forms.Button();
+            this.tbiktatoszam = new System.Windows.Forms.TextBox();
+            this.tbUgyfazo = new System.Windows.Forms.TextBox();
+            this.nudiktold = new System.Windows.Forms.NumericUpDown();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.tbMegj = new System.Windows.Forms.TextBox();
             this.lbOra = new System.Windows.Forms.Label();
             this.bStop = new System.Windows.Forms.Button();
             this.bStart = new System.Windows.Forms.Button();
@@ -37,41 +47,31 @@
             this.tevekenysegBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tKTEGJ_IRFDataSet = new IRF_Beadando.TKTEGJ_IRFDataSet();
             this.label1 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.munkavegzesBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.tevekenysegTableAdapter = new IRF_Beadando.TKTEGJ_IRFDataSetTableAdapters.TevekenysegTableAdapter();
-            this.tableAdapterManager = new IRF_Beadando.TKTEGJ_IRFDataSetTableAdapters.TableAdapterManager();
-            this.munkavegzesTableAdapter = new IRF_Beadando.TKTEGJ_IRFDataSetTableAdapters.MunkavegzesTableAdapter();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.tbMegj = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.nudiktold = new System.Windows.Forms.NumericUpDown();
-            this.tbUgyfazo = new System.Windows.Forms.TextBox();
-            this.tbiktatoszam = new System.Windows.Forms.TextBox();
+            this.dgvmunkavegzes = new System.Windows.Forms.DataGridView();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dolgozoIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tevekenysegIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.kezdodatumDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.vegdatumDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ledolgozottDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.megjegyzesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ugyfelazonositoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.iktatoszamDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.iktatottoldalszamDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ledolgozottDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bNapzar = new System.Windows.Forms.Button();
-            this.chbnapzar = new System.Windows.Forms.CheckBox();
+            this.munkavegzesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.tevekenysegTableAdapter = new IRF_Beadando.TKTEGJ_IRFDataSetTableAdapters.TevekenysegTableAdapter();
+            this.tableAdapterManager = new IRF_Beadando.TKTEGJ_IRFDataSetTableAdapters.TableAdapterManager();
+            this.munkavegzesTableAdapter = new IRF_Beadando.TKTEGJ_IRFDataSetTableAdapters.MunkavegzesTableAdapter();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudiktold)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tevekenysegBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tKTEGJ_IRFDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvmunkavegzes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.munkavegzesBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudiktold)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -102,10 +102,97 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.AutoScroll = true;
-            this.splitContainer1.Panel2.Controls.Add(this.dataGridView1);
+            this.splitContainer1.Panel2.Controls.Add(this.dgvmunkavegzes);
             this.splitContainer1.Size = new System.Drawing.Size(1007, 450);
             this.splitContainer1.SplitterDistance = 226;
             this.splitContainer1.TabIndex = 0;
+            // 
+            // chbnapzar
+            // 
+            this.chbnapzar.AutoSize = true;
+            this.chbnapzar.Location = new System.Drawing.Point(711, 183);
+            this.chbnapzar.Name = "chbnapzar";
+            this.chbnapzar.Size = new System.Drawing.Size(105, 17);
+            this.chbnapzar.TabIndex = 14;
+            this.chbnapzar.Text = "Lezárom a napot";
+            this.chbnapzar.UseVisualStyleBackColor = true;
+            this.chbnapzar.CheckedChanged += new System.EventHandler(this.Chbnapzar_CheckedChanged);
+            // 
+            // bNapzar
+            // 
+            this.bNapzar.Enabled = false;
+            this.bNapzar.Location = new System.Drawing.Point(839, 169);
+            this.bNapzar.Name = "bNapzar";
+            this.bNapzar.Size = new System.Drawing.Size(75, 42);
+            this.bNapzar.TabIndex = 13;
+            this.bNapzar.Text = "Nap zárása (.csv export)";
+            this.bNapzar.UseVisualStyleBackColor = true;
+            this.bNapzar.Click += new System.EventHandler(this.BNapzar_Click);
+            // 
+            // tbiktatoszam
+            // 
+            this.tbiktatoszam.Location = new System.Drawing.Point(601, 49);
+            this.tbiktatoszam.Name = "tbiktatoszam";
+            this.tbiktatoszam.Size = new System.Drawing.Size(100, 20);
+            this.tbiktatoszam.TabIndex = 12;
+            // 
+            // tbUgyfazo
+            // 
+            this.tbUgyfazo.Location = new System.Drawing.Point(617, 19);
+            this.tbUgyfazo.Name = "tbUgyfazo";
+            this.tbUgyfazo.Size = new System.Drawing.Size(100, 20);
+            this.tbUgyfazo.TabIndex = 11;
+            // 
+            // nudiktold
+            // 
+            this.nudiktold.Location = new System.Drawing.Point(590, 96);
+            this.nudiktold.Name = "nudiktold";
+            this.nudiktold.Size = new System.Drawing.Size(120, 20);
+            this.nudiktold.TabIndex = 10;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(514, 98);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(77, 13);
+            this.label5.TabIndex = 9;
+            this.label5.Text = "Iktatott oldalak";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(511, 49);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(58, 13);
+            this.label4.TabIndex = 8;
+            this.label4.Text = "Iktatószám";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(508, 19);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(84, 13);
+            this.label3.TabIndex = 7;
+            this.label3.Text = "Ugyfélazonosító";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(34, 49);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(63, 13);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "Megjegyzés";
+            // 
+            // tbMegj
+            // 
+            this.tbMegj.Location = new System.Drawing.Point(145, 49);
+            this.tbMegj.Multiline = true;
+            this.tbMegj.Name = "tbMegj";
+            this.tbMegj.Size = new System.Drawing.Size(330, 63);
+            this.tbMegj.TabIndex = 5;
             // 
             // lbOra
             // 
@@ -120,23 +207,32 @@
             // 
             // bStop
             // 
+            this.bStop.BackColor = System.Drawing.Color.Red;
             this.bStop.Enabled = false;
-            this.bStop.Location = new System.Drawing.Point(400, 153);
+            this.bStop.FlatAppearance.BorderSize = 0;
+            this.bStop.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bStop.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.bStop.Location = new System.Drawing.Point(372, 145);
             this.bStop.Name = "bStop";
-            this.bStop.Size = new System.Drawing.Size(75, 23);
+            this.bStop.Size = new System.Drawing.Size(75, 31);
             this.bStop.TabIndex = 3;
             this.bStop.Text = "Stop";
-            this.bStop.UseVisualStyleBackColor = true;
+            this.bStop.UseVisualStyleBackColor = false;
             this.bStop.Click += new System.EventHandler(this.BStop_Click);
             // 
             // bStart
             // 
-            this.bStart.Location = new System.Drawing.Point(145, 153);
+            this.bStart.BackColor = System.Drawing.Color.Chartreuse;
+            this.bStart.FlatAppearance.BorderSize = 0;
+            this.bStart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bStart.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.bStart.Location = new System.Drawing.Point(198, 145);
+            this.bStart.Margin = new System.Windows.Forms.Padding(0);
             this.bStart.Name = "bStart";
-            this.bStart.Size = new System.Drawing.Size(75, 23);
+            this.bStart.Size = new System.Drawing.Size(75, 31);
             this.bStart.TabIndex = 2;
             this.bStart.Text = "Start";
-            this.bStart.UseVisualStyleBackColor = true;
+            this.bStart.UseVisualStyleBackColor = false;
             this.bStart.Click += new System.EventHandler(this.BStart_Click);
             // 
             // cbTevekenyseg
@@ -169,119 +265,27 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Tevékenység";
             // 
-            // dataGridView1
+            // dgvmunkavegzes
             // 
-            this.dataGridView1.AutoGenerateColumns = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvmunkavegzes.AutoGenerateColumns = false;
+            this.dgvmunkavegzes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvmunkavegzes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idDataGridViewTextBoxColumn,
             this.dolgozoIdDataGridViewTextBoxColumn,
             this.tevekenysegIdDataGridViewTextBoxColumn,
             this.kezdodatumDataGridViewTextBoxColumn,
             this.vegdatumDataGridViewTextBoxColumn,
+            this.ledolgozottDataGridViewTextBoxColumn,
             this.megjegyzesDataGridViewTextBoxColumn,
             this.ugyfelazonositoDataGridViewTextBoxColumn,
             this.iktatoszamDataGridViewTextBoxColumn,
-            this.iktatottoldalszamDataGridViewTextBoxColumn,
-            this.ledolgozottDataGridViewTextBoxColumn});
-            this.dataGridView1.DataSource = this.munkavegzesBindingSource;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(1007, 220);
-            this.dataGridView1.TabIndex = 0;
-            // 
-            // munkavegzesBindingSource
-            // 
-            this.munkavegzesBindingSource.DataMember = "Munkavegzes";
-            this.munkavegzesBindingSource.DataSource = this.tKTEGJ_IRFDataSet;
-            // 
-            // tevekenysegTableAdapter
-            // 
-            this.tevekenysegTableAdapter.ClearBeforeFill = true;
-            // 
-            // tableAdapterManager
-            // 
-            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
-            this.tableAdapterManager.DolgozoTableAdapter = null;
-            this.tableAdapterManager.MunkakorTableAdapter = null;
-            this.tableAdapterManager.MunkavegzesTableAdapter = this.munkavegzesTableAdapter;
-            this.tableAdapterManager.TevekenysegTableAdapter = this.tevekenysegTableAdapter;
-            this.tableAdapterManager.UpdateOrder = IRF_Beadando.TKTEGJ_IRFDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
-            // 
-            // munkavegzesTableAdapter
-            // 
-            this.munkavegzesTableAdapter.ClearBeforeFill = true;
-            // 
-            // timer1
-            // 
-            this.timer1.Interval = 1000;
-            this.timer1.Tick += new System.EventHandler(this.Timer1_Tick);
-            // 
-            // tbMegj
-            // 
-            this.tbMegj.Location = new System.Drawing.Point(145, 49);
-            this.tbMegj.Multiline = true;
-            this.tbMegj.Name = "tbMegj";
-            this.tbMegj.Size = new System.Drawing.Size(330, 63);
-            this.tbMegj.TabIndex = 5;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(34, 49);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(63, 13);
-            this.label2.TabIndex = 6;
-            this.label2.Text = "Megjegyzés";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(508, 19);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(84, 13);
-            this.label3.TabIndex = 7;
-            this.label3.Text = "Ugyfélazonosító";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(511, 49);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(58, 13);
-            this.label4.TabIndex = 8;
-            this.label4.Text = "Iktatószám";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(514, 98);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(77, 13);
-            this.label5.TabIndex = 9;
-            this.label5.Text = "Iktatott oldalak";
-            // 
-            // nudiktold
-            // 
-            this.nudiktold.Location = new System.Drawing.Point(590, 96);
-            this.nudiktold.Name = "nudiktold";
-            this.nudiktold.Size = new System.Drawing.Size(120, 20);
-            this.nudiktold.TabIndex = 10;
-            // 
-            // tbUgyfazo
-            // 
-            this.tbUgyfazo.Location = new System.Drawing.Point(617, 19);
-            this.tbUgyfazo.Name = "tbUgyfazo";
-            this.tbUgyfazo.Size = new System.Drawing.Size(100, 20);
-            this.tbUgyfazo.TabIndex = 11;
-            // 
-            // tbiktatoszam
-            // 
-            this.tbiktatoszam.Location = new System.Drawing.Point(601, 49);
-            this.tbiktatoszam.Name = "tbiktatoszam";
-            this.tbiktatoszam.Size = new System.Drawing.Size(100, 20);
-            this.tbiktatoszam.TabIndex = 12;
+            this.iktatottoldalszamDataGridViewTextBoxColumn});
+            this.dgvmunkavegzes.DataSource = this.munkavegzesBindingSource;
+            this.dgvmunkavegzes.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvmunkavegzes.Location = new System.Drawing.Point(0, 0);
+            this.dgvmunkavegzes.Name = "dgvmunkavegzes";
+            this.dgvmunkavegzes.Size = new System.Drawing.Size(1007, 220);
+            this.dgvmunkavegzes.TabIndex = 0;
             // 
             // idDataGridViewTextBoxColumn
             // 
@@ -316,12 +320,21 @@
             this.kezdodatumDataGridViewTextBoxColumn.DataPropertyName = "Kezdodatum";
             this.kezdodatumDataGridViewTextBoxColumn.HeaderText = "Kezdodatum";
             this.kezdodatumDataGridViewTextBoxColumn.Name = "kezdodatumDataGridViewTextBoxColumn";
+            this.kezdodatumDataGridViewTextBoxColumn.Width = 120;
             // 
             // vegdatumDataGridViewTextBoxColumn
             // 
             this.vegdatumDataGridViewTextBoxColumn.DataPropertyName = "Vegdatum";
             this.vegdatumDataGridViewTextBoxColumn.HeaderText = "Vegdatum";
             this.vegdatumDataGridViewTextBoxColumn.Name = "vegdatumDataGridViewTextBoxColumn";
+            this.vegdatumDataGridViewTextBoxColumn.Width = 120;
+            // 
+            // ledolgozottDataGridViewTextBoxColumn
+            // 
+            this.ledolgozottDataGridViewTextBoxColumn.DataPropertyName = "Ledolgozott";
+            this.ledolgozottDataGridViewTextBoxColumn.HeaderText = "Ledolgozott (perc)";
+            this.ledolgozottDataGridViewTextBoxColumn.Name = "ledolgozottDataGridViewTextBoxColumn";
+            this.ledolgozottDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // megjegyzesDataGridViewTextBoxColumn
             // 
@@ -347,34 +360,32 @@
             this.iktatottoldalszamDataGridViewTextBoxColumn.HeaderText = "Iktatottoldalszam";
             this.iktatottoldalszamDataGridViewTextBoxColumn.Name = "iktatottoldalszamDataGridViewTextBoxColumn";
             // 
-            // ledolgozottDataGridViewTextBoxColumn
+            // munkavegzesBindingSource
             // 
-            this.ledolgozottDataGridViewTextBoxColumn.DataPropertyName = "Ledolgozott";
-            this.ledolgozottDataGridViewTextBoxColumn.HeaderText = "Ledolgozott (perc)";
-            this.ledolgozottDataGridViewTextBoxColumn.Name = "ledolgozottDataGridViewTextBoxColumn";
-            this.ledolgozottDataGridViewTextBoxColumn.ReadOnly = true;
+            this.munkavegzesBindingSource.DataMember = "Munkavegzes";
+            this.munkavegzesBindingSource.DataSource = this.tKTEGJ_IRFDataSet;
             // 
-            // bNapzar
+            // tevekenysegTableAdapter
             // 
-            this.bNapzar.Enabled = false;
-            this.bNapzar.Location = new System.Drawing.Point(839, 169);
-            this.bNapzar.Name = "bNapzar";
-            this.bNapzar.Size = new System.Drawing.Size(75, 42);
-            this.bNapzar.TabIndex = 13;
-            this.bNapzar.Text = "Nap zárása (.csv export)";
-            this.bNapzar.UseVisualStyleBackColor = true;
-            this.bNapzar.Click += new System.EventHandler(this.BNapzar_Click);
+            this.tevekenysegTableAdapter.ClearBeforeFill = true;
             // 
-            // chbnapzar
+            // tableAdapterManager
             // 
-            this.chbnapzar.AutoSize = true;
-            this.chbnapzar.Location = new System.Drawing.Point(711, 183);
-            this.chbnapzar.Name = "chbnapzar";
-            this.chbnapzar.Size = new System.Drawing.Size(105, 17);
-            this.chbnapzar.TabIndex = 14;
-            this.chbnapzar.Text = "Lezárom a napot";
-            this.chbnapzar.UseVisualStyleBackColor = true;
-            this.chbnapzar.CheckedChanged += new System.EventHandler(this.Chbnapzar_CheckedChanged);
+            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager.DolgozoTableAdapter = null;
+            this.tableAdapterManager.MunkakorTableAdapter = null;
+            this.tableAdapterManager.MunkavegzesTableAdapter = this.munkavegzesTableAdapter;
+            this.tableAdapterManager.TevekenysegTableAdapter = this.tevekenysegTableAdapter;
+            this.tableAdapterManager.UpdateOrder = IRF_Beadando.TKTEGJ_IRFDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            // 
+            // munkavegzesTableAdapter
+            // 
+            this.munkavegzesTableAdapter.ClearBeforeFill = true;
+            // 
+            // timer1
+            // 
+            this.timer1.Interval = 999;
+            this.timer1.Tick += new System.EventHandler(this.Timer1_Tick);
             // 
             // MunkavegzesForm
             // 
@@ -391,11 +402,11 @@
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.nudiktold)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tevekenysegBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tKTEGJ_IRFDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvmunkavegzes)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.munkavegzesBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudiktold)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -411,7 +422,7 @@
         private System.Windows.Forms.BindingSource munkavegzesBindingSource;
         private System.Windows.Forms.ComboBox cbTevekenyseg;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvmunkavegzes;
         private System.Windows.Forms.Label lbOra;
         private System.Windows.Forms.Button bStop;
         private System.Windows.Forms.Button bStart;
@@ -424,17 +435,17 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox tbMegj;
+        private System.Windows.Forms.CheckBox chbnapzar;
+        private System.Windows.Forms.Button bNapzar;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dolgozoIdDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewComboBoxColumn tevekenysegIdDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn kezdodatumDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn vegdatumDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ledolgozottDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn megjegyzesDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn ugyfelazonositoDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn iktatoszamDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn iktatottoldalszamDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ledolgozottDataGridViewTextBoxColumn;
-        private System.Windows.Forms.CheckBox chbnapzar;
-        private System.Windows.Forms.Button bNapzar;
     }
 }
