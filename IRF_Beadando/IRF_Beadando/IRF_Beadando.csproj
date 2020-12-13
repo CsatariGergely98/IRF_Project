@@ -136,6 +136,7 @@
     <Compile Include="Munkakor.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="MunkavegzesEpito.cs" />
     <Compile Include="MunkavegzesForm.cs">
       <SubType>Form</SubType>
     </Compile>

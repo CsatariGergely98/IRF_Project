@@ -11,22 +11,22 @@ Az Építõ minta definíciója:
 implementálunk, egyre hosszabb paraméterlistával, a kombinációk sokfélesége okán akár exponenciális
 növekedésrõl is beszélhetünk. Az építõ minta Építõ osztálya minden paramétert külön-külön kap meg, és
 így elemenként építi fel a Terméket.”
-Az az elképzelésem, hogy készítek egy minden elképzelhetõ adatot tartalmazó Tevekenyseg osztályt
+Az az elképzelésem, hogy készítek egy minden elképzelhetõ adatot tartalmazó Munkavegzes osztályt
 konstruktor nélkül. A toString() metódust úgy írom meg, hogy CSV formátumot adjon vissza, így egyszerû
 lesz az export elkészítése és jól használható unit tesztekhez is.
-Készítek egy TevekenysegEpito osztályt. Ezen utóbbinak lesz egy Create metódusa (a kötelezõen
+Készítek egy MunkavegzesEpito osztályt. Ezen utóbbinak lesz egy Create metódusa (a kötelezõen
 kitöltendõ Tevékenység mezõkkel) és minden egyéb (opcionális) tevékenység tulajdonsághoz pedig egyegy beállító metódusa. A builder-t „fluent API” stílusban készítem, így egyszerûbb és olvashatóbb lesz a
 kód.
 Tehát egy új tevékenység objektum létrehozása (egyszerû esetben) így fog kinézni:
-Tevekenyseg t = new TevekenysegEpito()
+Munkavegzes t = new MunkavegzesEpito()
 .Create(kod, startIdo, stopIdo)
 .build();
 Opcionális paraméterek esetén pedig így:
-Tevekenyseg t = new TevekenysegEpito()
+Munkavegzes t = new MunkavegzesEpito()
 .Create(kod, startIdo, stopIdo)
 .Ugyfelazo(ugyfel)
 .build();
-Tevekenyseg t2 = new TevekenysegEpito()
+Munkavegzes t2 = new MunkavegzesEpito()
 .Create(kod, startIdo, stopIdo)
 .Iktatoszam(iksz)
 .Lapszam(9)
