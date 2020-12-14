@@ -121,9 +121,10 @@
             // bNapzar
             // 
             this.bNapzar.Enabled = false;
-            this.bNapzar.Location = new System.Drawing.Point(839, 169);
+            this.bNapzar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.bNapzar.Location = new System.Drawing.Point(822, 165);
             this.bNapzar.Name = "bNapzar";
-            this.bNapzar.Size = new System.Drawing.Size(75, 42);
+            this.bNapzar.Size = new System.Drawing.Size(85, 51);
             this.bNapzar.TabIndex = 13;
             this.bNapzar.Text = "Nap zárása (.csv export)";
             this.bNapzar.UseVisualStyleBackColor = true;
@@ -131,21 +132,21 @@
             // 
             // tbiktatoszam
             // 
-            this.tbiktatoszam.Location = new System.Drawing.Point(601, 49);
+            this.tbiktatoszam.Location = new System.Drawing.Point(604, 49);
             this.tbiktatoszam.Name = "tbiktatoszam";
-            this.tbiktatoszam.Size = new System.Drawing.Size(100, 20);
+            this.tbiktatoszam.Size = new System.Drawing.Size(120, 20);
             this.tbiktatoszam.TabIndex = 12;
             // 
             // tbUgyfazo
             // 
-            this.tbUgyfazo.Location = new System.Drawing.Point(617, 19);
+            this.tbUgyfazo.Location = new System.Drawing.Point(604, 20);
             this.tbUgyfazo.Name = "tbUgyfazo";
-            this.tbUgyfazo.Size = new System.Drawing.Size(100, 20);
+            this.tbUgyfazo.Size = new System.Drawing.Size(120, 20);
             this.tbUgyfazo.TabIndex = 11;
             // 
             // nudiktold
             // 
-            this.nudiktold.Location = new System.Drawing.Point(590, 96);
+            this.nudiktold.Location = new System.Drawing.Point(604, 80);
             this.nudiktold.Name = "nudiktold";
             this.nudiktold.Size = new System.Drawing.Size(120, 20);
             this.nudiktold.TabIndex = 10;
@@ -153,7 +154,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(514, 98);
+            this.label5.Location = new System.Drawing.Point(514, 80);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(77, 13);
             this.label5.TabIndex = 9;
@@ -162,7 +163,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(511, 49);
+            this.label4.Location = new System.Drawing.Point(514, 49);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(58, 13);
             this.label4.TabIndex = 8;
@@ -171,7 +172,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(508, 19);
+            this.label3.Location = new System.Drawing.Point(514, 20);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(84, 13);
             this.label3.TabIndex = 7;
@@ -284,6 +285,7 @@
             this.dgvmunkavegzes.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvmunkavegzes.Location = new System.Drawing.Point(0, 0);
             this.dgvmunkavegzes.Name = "dgvmunkavegzes";
+            this.dgvmunkavegzes.ReadOnly = true;
             this.dgvmunkavegzes.Size = new System.Drawing.Size(1007, 220);
             this.dgvmunkavegzes.TabIndex = 0;
             // 
@@ -300,6 +302,7 @@
             this.dolgozoIdDataGridViewTextBoxColumn.DataPropertyName = "DolgozoId";
             this.dolgozoIdDataGridViewTextBoxColumn.HeaderText = "DolgozoId";
             this.dolgozoIdDataGridViewTextBoxColumn.Name = "dolgozoIdDataGridViewTextBoxColumn";
+            this.dolgozoIdDataGridViewTextBoxColumn.ReadOnly = true;
             this.dolgozoIdDataGridViewTextBoxColumn.Visible = false;
             // 
             // tevekenysegIdDataGridViewTextBoxColumn
@@ -320,6 +323,7 @@
             this.kezdodatumDataGridViewTextBoxColumn.DataPropertyName = "Kezdodatum";
             this.kezdodatumDataGridViewTextBoxColumn.HeaderText = "Kezdodatum";
             this.kezdodatumDataGridViewTextBoxColumn.Name = "kezdodatumDataGridViewTextBoxColumn";
+            this.kezdodatumDataGridViewTextBoxColumn.ReadOnly = true;
             this.kezdodatumDataGridViewTextBoxColumn.Width = 120;
             // 
             // vegdatumDataGridViewTextBoxColumn
@@ -327,6 +331,7 @@
             this.vegdatumDataGridViewTextBoxColumn.DataPropertyName = "Vegdatum";
             this.vegdatumDataGridViewTextBoxColumn.HeaderText = "Vegdatum";
             this.vegdatumDataGridViewTextBoxColumn.Name = "vegdatumDataGridViewTextBoxColumn";
+            this.vegdatumDataGridViewTextBoxColumn.ReadOnly = true;
             this.vegdatumDataGridViewTextBoxColumn.Width = 120;
             // 
             // ledolgozottDataGridViewTextBoxColumn
@@ -341,24 +346,28 @@
             this.megjegyzesDataGridViewTextBoxColumn.DataPropertyName = "Megjegyzes";
             this.megjegyzesDataGridViewTextBoxColumn.HeaderText = "Megjegyzes";
             this.megjegyzesDataGridViewTextBoxColumn.Name = "megjegyzesDataGridViewTextBoxColumn";
+            this.megjegyzesDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // ugyfelazonositoDataGridViewTextBoxColumn
             // 
             this.ugyfelazonositoDataGridViewTextBoxColumn.DataPropertyName = "Ugyfelazonosito";
             this.ugyfelazonositoDataGridViewTextBoxColumn.HeaderText = "Ugyfelazonosito";
             this.ugyfelazonositoDataGridViewTextBoxColumn.Name = "ugyfelazonositoDataGridViewTextBoxColumn";
+            this.ugyfelazonositoDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // iktatoszamDataGridViewTextBoxColumn
             // 
             this.iktatoszamDataGridViewTextBoxColumn.DataPropertyName = "Iktatoszam";
             this.iktatoszamDataGridViewTextBoxColumn.HeaderText = "Iktatoszam";
             this.iktatoszamDataGridViewTextBoxColumn.Name = "iktatoszamDataGridViewTextBoxColumn";
+            this.iktatoszamDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // iktatottoldalszamDataGridViewTextBoxColumn
             // 
             this.iktatottoldalszamDataGridViewTextBoxColumn.DataPropertyName = "Iktatottoldalszam";
             this.iktatottoldalszamDataGridViewTextBoxColumn.HeaderText = "Iktatottoldalszam";
             this.iktatottoldalszamDataGridViewTextBoxColumn.Name = "iktatottoldalszamDataGridViewTextBoxColumn";
+            this.iktatottoldalszamDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // munkavegzesBindingSource
             // 
