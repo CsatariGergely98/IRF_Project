@@ -20,13 +20,6 @@ namespace IRF_Beadando
             cbTevekenyseg.Text = "";
         }
 
-        private void TevekenysegBindingNavigatorSaveItem_Click(object sender, EventArgs e)
-        {
-            this.Validate();
-            this.tevekenysegBindingSource.EndEdit();
-            this.tableAdapterManager.UpdateAll(this.tKTEGJ_IRFDataSet);
-
-        }
 
         private void MunkavegzesForm_Load(object sender, EventArgs e)
         {
@@ -35,6 +28,7 @@ namespace IRF_Beadando
             this.munkavegzesTableAdapter.FillByDolgozo(this.tKTEGJ_IRFDataSet.Munkavegzes, MainForm.aktdolg.Id);
             // TODO: This line of code loads data into the 'tKTEGJ_IRFDataSet.Tevekenyseg' table. You can move, or remove it, as needed.
             this.tevekenysegTableAdapter.Fill(this.tKTEGJ_IRFDataSet.Tevekenyseg);
+            cbTevekenyseg.Text = "";
 
         }
 
@@ -62,6 +56,12 @@ namespace IRF_Beadando
 
         private void BStop_Click(object sender, EventArgs e)
         {
+            int minsDiff = ((TimeSpan)(DateTime.Now - kezdoido)).Minutes;
+            if (minsDiff<1)
+            {
+                MessageBox.Show("Minimum 1 percet kell egy tevékenységre fordítani");
+                return;
+            }
             timer1.Stop();
             Munkavegzes m = new MunkavegzesEpito()
                 .Create(MainForm.aktdolg.Id, (int)cbTevekenyseg.SelectedValue, kezdoido, DateTime.Now)
