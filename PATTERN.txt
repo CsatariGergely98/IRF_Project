@@ -1,11 +1,33 @@
+Absztrakt exporter osztály, a "Template Method" tervezési minta alapján (MunkavegzesExpAbstractClass.cs)
+
+Mivel minden export ugyanazokból az elemi lépésekbõl épül fel (ellenõrzés, file létrehozás, adatok kiírása, file bezárás), ezért választottam ezt a mintát.
+Nekem csak a CSV export a feladatom, de ezzel a mintával könnyedén létrehozható XML, JSON, stb. export formátumok is.
+Tehát az absztrakt osztály tartalmazza a vázat (Export metódus), és azokat a metódusokat amiket az egyes konkrét megvalósítások fejtenek ki.
+Mivel az adatok formázása (1-1 rekord) biztosan különbözõ minden formátumban így FormatLine az absztrakt.
+A GetHeader és GetFooter, kapott egy default, "nincs" megvalósítást. Ennek oka, hogy nem minden formátumban értelmezett, minél kevesebb kódot kelljen írni egy-egy konkrét megvalósításhoz.
+A CsvExporter osztály tartalmazza a saját feladatom megvalósítását is.
+    public abstract class MunkavegzesExpAbstractClass
+    {
+        public bool Export(string fileName, List<Munkavegzes> data) { ... }
+        public abstract string FormatLine(Munkavegzes m);
+        public virtual string GetHeader() { return null; }
+        public virtual string GetFooter() { return null; }
+	}
+    public class CsvExporter : MunkavegzesExpAbstractClass
+    {
+        override public string FormatLine(Munkavegzes m) { ... }
+	}
+	
+
+Építõ tervezési minta (MunkavegzesEpito.cs)
+
 Egy-egy ügyfélszolgálatos számos tevékenységet végezhet, melyekhez rögzítenie kell a szükséges adatokat
 (esetenként akár fél tucatnyit). Ezen adatok között van átfedés (pl. start/stop idõ) de számos eltérés is,
 amikor csak egy-egy speciális plusz adatot kell megadni (pl. iktatott dokumentumok száma). A rögzített
 adatok adatbázis reprezentációja viszont, a könnyebb kezelhetõség (és az egyen CSV export miatt),
 kiterítve minden lehetséges adatmezõt felsorol; természetesen mindig csak azok lesznek kitöltve, amelyek
 az adott tevékenységnél értelmezettek.
-Úgy gondolom, hogy ezen probléma (mármint az „elburjánzó” konstruktor paraméterek) kiküszöbölésére
-jól tudnám alkalmazni az Építõ (Builder) tervezési mintát.
+Ezen probléma (mármint az „elburjánzó” konstruktor paraméterek) kiküszöbölésére alkalmaztam az Építõ (Builder) tervezési mintát.
 Az Építõ minta definíciója:
 „A probléma lényege, hogy a paraméterek számának növekedésével újabb és újabb konstruktorokat
 implementálunk, egyre hosszabb paraméterlistával, a kombinációk sokfélesége okán akár exponenciális
@@ -15,9 +37,9 @@ Az az elképzelésem, hogy készítek egy minden elképzelhetõ adatot tartalmazó Munk
 konstruktor nélkül. A toString() metódust úgy írom meg, hogy CSV formátumot adjon vissza, így egyszerû
 lesz az export elkészítése és jól használható unit tesztekhez is.
 Készítek egy MunkavegzesEpito osztályt. Ezen utóbbinak lesz egy Create metódusa (a kötelezõen
-kitöltendõ Tevékenység mezõkkel) és minden egyéb (opcionális) tevékenység tulajdonsághoz pedig egyegy beállító metódusa. A builder-t „fluent API” stílusban készítem, így egyszerûbb és olvashatóbb lesz a
+kitöltendõ Munkavégzés mezõkkel) és minden egyéb (opcionális) munkavégzés tulajdonsághoz pedig egyegy beállító metódusa. A builder-t „fluent API” stílusban készítem, így egyszerûbb és olvashatóbb lesz a
 kód.
-Tehát egy új tevékenység objektum létrehozása (egyszerû esetben) így fog kinézni:
+Tehát egy új Munkavégzés objektum létrehozása (egyszerû esetben) így néz ki:
 Munkavegzes t = new MunkavegzesEpito()
 .Create(kod, startIdo, stopIdo)
 .build();

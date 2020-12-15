@@ -45,7 +45,7 @@ namespace IRF_Beadando.Tests
             Assert.IsTrue(File.Exists(tesztFN), "0 elemszámú lista export file létezik");
 
             // export file beolvasas
-            var csvFile = File.ReadAllLines(tesztFN);
+            var csvFile = File.ReadAllLines(tesztFN); //arraybe olvas be
             var csvList = new List<string>(csvFile);
             Assert.AreEqual(csvList.Count, 1, "Csak fejléc sor van");
         }

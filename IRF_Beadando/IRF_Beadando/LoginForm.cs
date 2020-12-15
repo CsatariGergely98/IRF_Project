@@ -19,7 +19,7 @@ namespace IRF_Beadando
         public LoginForm()
         {
             InitializeComponent();
-            // TODO kivenni atadas elott
+            // admin bejelentkezés tesztelés miatt
             Logintb.Text = "admin";
             Jelszotb.Text = "Admin123";
             label1.BackColor = System.Drawing.Color.Transparent;

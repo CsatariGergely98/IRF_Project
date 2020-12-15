@@ -20,13 +20,9 @@ namespace IRF_Beadando
             cbTevekenyseg.Text = "";
         }
 
-
         private void MunkavegzesForm_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'tKTEGJ_IRFDataSet.Munkavegzes' table. You can move, or remove it, as needed.
-            //this.munkavegzesTableAdapter.Fill(this.tKTEGJ_IRFDataSet.Munkavegzes.Select("DolgozoId="+MainForm.aktdolg.Id.ToString()));
             this.munkavegzesTableAdapter.FillByDolgozo(this.tKTEGJ_IRFDataSet.Munkavegzes, MainForm.aktdolg.Id);
-            // TODO: This line of code loads data into the 'tKTEGJ_IRFDataSet.Tevekenyseg' table. You can move, or remove it, as needed.
             this.tevekenysegTableAdapter.Fill(this.tKTEGJ_IRFDataSet.Tevekenyseg);
             cbTevekenyseg.Text = "";
 
@@ -70,6 +66,7 @@ namespace IRF_Beadando
                 .Ikatoszam(tbiktatoszam.Text)
                 .IktatottOldalszam((int)nudiktold.Value)
                 .Build();
+
             MainForm.context.Munkavegzes.Add(m);
             MainForm.context.SaveChanges();
             this.munkavegzesTableAdapter.FillByDolgozo(this.tKTEGJ_IRFDataSet.Munkavegzes,MainForm.aktdolg.Id);

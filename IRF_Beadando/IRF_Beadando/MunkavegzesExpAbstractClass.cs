@@ -4,12 +4,10 @@ using System.IO;
 
 namespace IRF_Beadando
 {
-    /// <summary>
-    /// Absztrakt exporter osztály, a "Template Method" tervezési minta alapján.
-    /// Mivel minden export ugyanazokból az elemi lépésekből épül fel, ezért illik ide ez a minta.
-    /// Az egyes konkrét megvalósítások csak a szükséges metódusokat valósítják meg, írják felül.
-    /// A header/footer nem absztrakt, tartalmaz egy default megvalósítást; így azt csak szükséges esetben kell felülírni.
-    /// </summary>
+    // Absztrakt exporter osztály, a "Template Method" tervezési minta alapján.
+    // Mivel minden export ugyanazokból az elemi lépésekből épül fel, ezért illik ide ez a minta.
+    // Az egyes konkrét megvalósítások csak a szükséges metódusokat valósítják meg, írják felül.
+    // A header/footer nem absztrakt, tartalmaz egy default megvalósítást; így azt csak szükséges esetben kell felülírni.
     public abstract class MunkavegzesExpAbstractClass
     {
         public bool Export(string fileName, List<Munkavegzes> data)
@@ -52,9 +50,7 @@ namespace IRF_Beadando
         }
     }
 
-    /// <summary>
-    /// Konkrét exporter osztály: CSV formátum
-    /// </summary>
+    // Konkrét exporter osztály: CSV formátum
     public class CsvExporter : MunkavegzesExpAbstractClass
     {
 
@@ -71,9 +67,7 @@ namespace IRF_Beadando
         }
     }
 
-    /// <summary>
-    /// Konkrét exporter osztály: XML formátum. Nincs implementálva!
-    /// </summary>
+    // Konkrét exporter osztály: XML formátum. Nincs implementálva!
     public class XmlExporter : MunkavegzesExpAbstractClass
     {
 
@@ -84,9 +78,7 @@ namespace IRF_Beadando
         }
     }
 
-    /// <summary>
-    /// Konkrét exporter osztály: JSON formátum. Nincs implementálva!
-    /// </summary>
+    // Konkrét exporter osztály: JSON formátum. Nincs implementálva!
     public class JSonExporter : MunkavegzesExpAbstractClass
     {
 

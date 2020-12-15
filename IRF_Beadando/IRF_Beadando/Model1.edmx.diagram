@@ -8,7 +8,7 @@
         <EntityTypeShape EntityType="TKTEGJ_IRFModel.Dolgozo" Width="1.5" PointX="3.875" PointY="1.125" IsExpanded="true" />
         <EntityTypeShape EntityType="TKTEGJ_IRFModel.Munkakor" Width="1.5" PointX="0.75" PointY="1.875" IsExpanded="true" />
         <EntityTypeShape EntityType="TKTEGJ_IRFModel.Munkavegzes" Width="1.5" PointX="7" PointY="1.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="TKTEGJ_IRFModel.Tevekenyseg" Width="1.5" PointX="3" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TKTEGJ_IRFModel.Tevekenyseg" Width="1.5" PointX="3" PointY="4.875" IsExpanded="true" />
         <AssociationConnector Association="TKTEGJ_IRFModel.FK__Dolgozo__Munkako__5165187F" ManuallyRouted="false" />
         <AssociationConnector Association="TKTEGJ_IRFModel.FK_Munkavegzes_Dolgozo" ManuallyRouted="false" />
         <AssociationConnector Association="TKTEGJ_IRFModel.FK_Munkavegzes_Tevekenyseg" ManuallyRouted="false" />
