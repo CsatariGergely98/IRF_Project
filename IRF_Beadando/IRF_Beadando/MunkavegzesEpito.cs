@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace IRF_Beadando
 {
-    class MunkavegzesEpito
+    public class MunkavegzesEpito
     {
         private int dolgozoId;
         private int tevekenysegId;
@@ -47,7 +47,7 @@ namespace IRF_Beadando
             return this;
         }
 
-        public Munkavegzes build()
+        public Munkavegzes Build()
         {
             Munkavegzes m = new Munkavegzes();
             m.DolgozoId = dolgozoId;

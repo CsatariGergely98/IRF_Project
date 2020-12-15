@@ -68,7 +68,7 @@ namespace IRF_Beadando
                 .Ugyfelazonosito(tbUgyfazo.Text)
                 .Ikatoszam(tbiktatoszam.Text)
                 .IktatottOldalszam((int)nudiktold.Value)
-                .build();
+                .Build();
             MainForm.context.Munkavegzes.Add(m);
             MainForm.context.SaveChanges();
             this.munkavegzesTableAdapter.Fill(this.tKTEGJ_IRFDataSet.Munkavegzes);
