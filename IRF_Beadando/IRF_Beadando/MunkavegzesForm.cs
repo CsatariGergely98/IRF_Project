@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -71,7 +72,7 @@ namespace IRF_Beadando
                 .Build();
             MainForm.context.Munkavegzes.Add(m);
             MainForm.context.SaveChanges();
-            this.munkavegzesTableAdapter.Fill(this.tKTEGJ_IRFDataSet.Munkavegzes);
+            this.munkavegzesTableAdapter.FillByDolgozo(this.tKTEGJ_IRFDataSet.Munkavegzes,MainForm.aktdolg.Id);
             cbTevekenyseg.Enabled = true;
             cbTevekenyseg.Text = "";
             tbiktatoszam.Text = "";
@@ -105,8 +106,60 @@ namespace IRF_Beadando
                 MessageBox.Show("Üres napot nem lehet lezárni");
                 return;
             }
-            //todo export
-            Close();
+
+            using (SaveFileDialog saveFileDialog = new SaveFileDialog())
+            {
+                saveFileDialog.InitialDirectory = "c:\\";
+                saveFileDialog.Filter = "csv files (*.csv)|*.csv|All files (*.*)|*.*";
+                saveFileDialog.FilterIndex = 2;
+                saveFileDialog.RestoreDirectory = true;
+
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    //Get the path of specified file
+                    IRF_Beadando.TKTEGJ_IRFDataSet.MunkavegzesDataTable dt = new TKTEGJ_IRFDataSet.MunkavegzesDataTable();
+                    this.munkavegzesTableAdapter.FillByDolgozo(dt, MainForm.aktdolg.Id);                   
+                    CsvExporter ce = new CsvExporter();
+                    List<Munkavegzes> ml = ConvertDataTable<Munkavegzes>(dt);
+                    foreach (var item in ml)
+                    {
+                        item.Dolgozo = MainForm.aktdolg;
+                        item.Tevekenyseg = MainForm.context.Tevekenyseg.Find(item.TevekenysegId);
+                    }
+
+                    ce.Export(saveFileDialog.FileName,ml);
+                    MessageBox.Show("Sikeres mentés");
+                    Close();
+                }
+            }
+              
+        }
+        private static List<T> ConvertDataTable<T>(DataTable dt)
+        {
+            List<T> data = new List<T>();
+            foreach (DataRow row in dt.Rows)
+            {
+                T item = GetItem<T>(row);
+                data.Add(item);
+            }
+            return data;
+        }
+        private static T GetItem<T>(DataRow dr)
+        {
+            Type temp = typeof(T);
+            T obj = Activator.CreateInstance<T>();
+
+            foreach (DataColumn column in dr.Table.Columns)
+            {
+                foreach (PropertyInfo pro in temp.GetProperties())
+                {
+                    if (pro.Name == column.ColumnName)
+                        pro.SetValue(obj, dr[column.ColumnName], null);
+                    else
+                        continue;
+                }
+            }
+            return obj;
         }
     }
 }
