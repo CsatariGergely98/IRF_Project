@@ -25,7 +25,6 @@ namespace IRF_Beadando
             this.munkavegzesTableAdapter.FillByDolgozo(this.tKTEGJ_IRFDataSet.Munkavegzes, MainForm.aktdolg.Id);
             this.tevekenysegTableAdapter.Fill(this.tKTEGJ_IRFDataSet.Tevekenyseg);
             cbTevekenyseg.Text = "";
-
         }
 
         private void Timer1_Tick(object sender, EventArgs e)
